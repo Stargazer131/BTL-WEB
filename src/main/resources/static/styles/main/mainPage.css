@@ -87,10 +87,6 @@ li {
     color: #ffb86c;
 }
 
-.header-list-items:hover .button-search i {
-    color: #ff79c6;
-}
-
 .header-list-items:hover {
     background-color: #ff79c6;
     color: #000;
