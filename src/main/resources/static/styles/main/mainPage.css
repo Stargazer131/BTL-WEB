@@ -112,10 +112,6 @@ li {
     margin-bottom: 100px;
 }
 
-.background .background-image {
-    width: 100%;
-}
-
 .book-list {
     margin: 20px 100px;
 }
@@ -127,11 +123,7 @@ li {
     color: #b1a21e;
     font-weight: 400;
 }
-.book-list-content {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-}
+
 .book-list-content-container {
     display: flex;
     gap: 19px;
@@ -142,6 +134,21 @@ li {
     font-size: smaller;
     margin-top: 8px;
 }
+
+.book-list-content {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.book {
+    background-color: #06121e;
+    color:  #fff;
+    border: none;   
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
 
 .book-list-content-image {
     padding:0;
@@ -158,13 +165,4 @@ li {
     cursor:pointer;
     color: #fff;
 }
-
-.book {
-    background-color: #06121e;
-    color:  #fff;
-    border: none;   
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
-}
-
 
