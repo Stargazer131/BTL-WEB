@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: bold;
+    background-color: #06121e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)), url('../../images/poster/Update-Book-Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    z-index: -5;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.background-image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    background-color: #ff79c6;
+    color: #333;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+} 
+
+.header-list-one {
+    display: flex;
+}
+
+.header-list-two {
+    display: flex;
+}
+
+.header-list-items .avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.avatar {
+    font-size: 30px;
+    margin: 0;
+    padding-top: 3px;
+    padding-right: 10px;
+}
+
+li {
+    list-style: none;
+    margin: 0 6px;
+}
+
+.header-list-items {
+    color: #333;
+    font-weight: 500;
+    padding: 16px 20px;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-search {
+    gap: 5px;
+}
+
+.button-search i {
+    color: #ffb86c;
+}
+
+.header-list-items:hover .button-search i {
+    color: #ff79c6;
+}
+
+.header-list-items:hover {
+    background-color: #000;
+    color: #ff79c6;
+    font-weight: 400;
+}
+
+.input-book-container {
+    background-color: #44475a;
+    margin-top: 5%;
+    width: 950px;
+    height: 640px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px #000;
+}
+
+label {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    
+}
+
+.input-book-upper {
+    display: flex;
+}
+
+.input-book-info {
+    flex:1;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px 10px;
+    padding-right: 30px;
+    justify-content: space-evenly;
+
+}
+
+.input-book-cover {
+    flex: 1;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 75px;
+    gap: 10px
+}
+
+img {
+    box-shadow: 5px 5px 3px #333;
+    object-fit: cover;
+    object-position: center;
+}
+
+.info-input-bar {
+    margin: 8px 0px;
+    padding: 15px;
+    background-color: #282a36;
+    border-radius: 8px;
+    border: 1px solid #6f7072;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.4s ease-in-out;
+}
+
+select {
+    background-color: #282a36;
+    font-size: 16px;
+    padding: 15px;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+option {
+    padding: 8px;
+}
+
+.input-book-lower {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 100px;
+    padding-right: 89px;
+    height: 120px;
+}
+
+.description-input {
+    flex: 1;
+    margin: 8px 0px;
+    padding: 15px;
+    background-color: #282a36;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    text-align: none;
+    padding-top: 5px;
+    transition: all 0.4s ease-in-out;
+    border: 1px solid #6f7072;
+}
+
+.input-book-button {
+    width: 100%;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+.add-button {
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 20px;
+    background-color: #50fa7b;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+textarea {
+    border-radius: 5px;
+    background-color: #282a36;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #fff;
+    color: #333;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.icon {
+}
+
+.thisImage {
+    width: 250px;
+    height: 355px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.upload-button-cover {
+    height: 100%;
+    display: flex;
+    text-transform: uppercase;
+    color: #333;
+    padding-bottom: 30px;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.upload-button {
+    background-color: #ff79c6;
+    padding: 7px 10px;
+    padding-top: 5px;
+    padding-right: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+}
+
+.upload-button-background {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}

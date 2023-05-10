@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #282a36;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 450px;
+    height: 500px;
+    background-color: #44475a;
+    margin-top: 20vh;
+    padding: 0 30px;
+    border-radius: 7px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ff79c6;
+    font-size: 20px;
+}
+
+.input {
+    padding: 16px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 1px solid #6f7072;
+    transition: all 0.4s ease-in-out;
+    background-color: #282a36;
+    color: #fff;
+}
+
+.input:focus {
+    background-color: #fff;
+    color: #333;
+}
+
+.input-info {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    position: relative;
+}
+
+.button {
+    font-size: 22px;
+    background-color: #bd93f9;
+    color: #fff;
+    cursor: pointer;
+    flex: 1;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #ff79c6;
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    position:relative;
+   
+}
+
+.register-text {
+    color: #ff79c6;
+}
+
+.message {
+    background-color: #FFABAB;
+    color: #ED2B2A;
+    text-align: center;
+    padding: 15px 10px;
+    border-radius: 5px;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.eye {
+    position: absolute;
+    max-width: 20px;
+    right: 15px;
+    bottom: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.black {
+    color: #000;
+}
+
+.hidden {
+    display: none;
+}

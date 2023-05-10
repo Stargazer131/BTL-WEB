@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: bold;
+    background-color: #06121e;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    color: #fff;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+} 
+
+.header-background {
+    background-color: #ff79c6;
+    opacity: 0.85;
+}
+
+.header-background .header-list-items {
+    color: #000;
+    font-weight: 600;
+}
+
+.header-list-one {
+    display: flex;
+}
+
+.header-list-two {
+    display: flex;
+}
+
+.header-list-items .avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.avatar {
+    font-size: 30px;
+    margin: 0;
+    padding-top: 3px;
+    padding-right: 10px;
+    /* padding-left: 20px; */
+}
+
+li {
+    list-style: none;
+    margin: 0 6px;
+}
+
+.header-list-items {
+    color: #fff;
+    padding: 16px 20px;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-search {
+    gap: 5px;
+}
+
+.button-search i {
+    color: #ffb86c;
+}
+
+.header-list-items:hover .button-search i {
+    color: #ff79c6;
+}
+
+.header-list-items:hover {
+    background-color: #ff79c6;
+    color: #000;
+    font-weight: 600;
+}
+.header-background .header-list-items:hover {
+    background-color: #000;
+    color: #ff79c6;
+    font-weight: 600;
+}
+
+.background {
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),  url('../../images/poster/anime-library-background.jpg');
+    width: 100%;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    margin-bottom: 100px;
+}
+
+.background .background-image {
+    width: 100%;
+}
+
+.book-list {
+    margin: 20px 100px;
+}
+
+.book-list-title {
+    border-bottom: 1px solid #6272a4;
+    margin-bottom: 4px;
+    font-family: 'Oswald';
+    color: #b1a21e;
+    font-weight: 400;
+}
+.book-list-content {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.book-list-content-container {
+    display: flex;
+    gap: 19px;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: smaller;
+    margin-top: 8px;
+}
+
+.book-list-content-image {
+    padding:0;
+    margin:0;
+    width: 15.5rem;
+    cursor:pointer;
+}
+
+.book-list-content-title {
+    max-width: 15.5rem;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    cursor:pointer;
+    color: #fff;
+}
+
+.book {
+    background-color: #06121e;
+    color:  #fff;
+    border: none;   
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+

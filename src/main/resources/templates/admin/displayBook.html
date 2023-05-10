@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/styles/main/displayBook.css" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Oswald&display=swap" rel="stylesheet"/>
+    <script src="/script/main/headerShort.js"></script>
+    <title th:text="${book.title}">Sách</title>
+</head>
+
+<body>
+        <div class="header">
+            <div  class="header-list">
+                <ul class="header-list-one">
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Trang chủ</li></div></a>
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Thể loại</li></div></a>
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Sách hay</li></div></a>
+                    <a href="/admin/findBook">
+                        <li>
+                            <div class="header-list-items button-search">
+                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                <p class="search-bar-button-text">Tìm kiếm</p> 
+                            </div>
+                        </li> 
+                    </a>
+                </ul>
+            </div>
+            <div class="head-list">
+                <ul class="header-list-two">
+                    <a href="/admin/adminHomePage">
+                        <div class="header-list-items avatar-container">
+                            <li class="avatar"><i class="fa-solid fa-circle-user"></i></li>
+                            <p>admin</p>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    <div class="book-info-container">
+        <div class="background"></div>
+        <div class="book-info-content">
+            <div class="book-cover">
+                <img th:src="@{/images/books/{id}.png(id=${book.id})}" onerror="this.onerror=null; this.src='/images/books/default.png';">
+                <form action="/admin/listOfBook/update" method="post">
+                    <button type="submit" class="button">
+                        <i class="fa-solid fa-arrow-up-from-bracket icon"></i>
+                        <p class="button-text">Cập nhật</p>
+                        <input type="hidden" name="bookId" th:value="${book.id}"/>
+                    </button>
+                </form>
+            </div>
+            <div class="book-info">
+                <h1 class="book-name" th:text="${book.title}"></h1>   
+                <div class="error"><p th:text="${error}"></p></div>
+                <div class="box">
+                    <div class="box-content">
+                        <label for="Author">TÁC GIẢ</label>
+                        <span th:text="${book.author}"></span>
+                    </div>
+                    <div class="box-content">
+                        <label for="Genre" >thể loại</label>
+                        <span th:text="${book.genre}"></span>
+                    </div>
+                    <div class="box-content">
+                        <label for="quantity">Số lượng</label>
+                        <span th:text="${book.quantity}"></span>
+                    </div>
+                </div>
+                <p class="book-description" th:text="${book.description}"></p>
+                <div class="book-list">
+                    <div class="book-list-title">
+                        <h5>SÁCH TƯƠNG TỰ</h5>
+                    </div>
+                    <div class="book-list-container">
+                        <form action="/admin/findBook/display" method="post" th:each="similarBook : ${similarBooks}">
+                            <button>
+                                <div class="book-list-content" >
+                                    <img class="book-list-content-image" th:src="@{/images/books/{id}.png(id=${similarBook.id})}" 
+                                         onerror="this.onerror=null; this.src='/images/books/default.png';">
+                                    <p class="book-list-content-title" th:text="${similarBook.title}"></p>
+                                    <input type="hidden" name="bookId" th:value="${similarBook.id}"/>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

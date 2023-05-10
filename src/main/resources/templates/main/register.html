@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Đăng ký</title>
+        <link rel="stylesheet" href="/styles/main/register.css" type="text/css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body>
+        <div class="register-box">
+            <div class="text">
+                <p class="text-item">Đăng ký</p>
+                <h1 class="text-item">Thư Viện</h1>
+                <p th:text="${emailError}"></p>
+                <p th:text="${dateError}"></p>
+                <p th:text="${passwordError}"></p>
+            </div>
+            <form method="post" action="/register" th:object="${user}">
+                <div class="input-container">
+                    <div class="name">
+                        <input type="text" th:field="*{name}" placeholder="Họ và Tên" class="input-name-item input-name-item-one" required="" />
+                    </div> 
+
+                    <div class="dob">
+                        <div class="dob-day">
+                            <label for="day">Ngày:</label>
+                            <select name="day">
+                                <option class="option" th:each="num : ${#numbers.sequence(1,31)}" 
+                                        th:value="${num}" th:text="${num < 10 ? '0' + num : num}" th:selected="${num == #dates.day(user.birthday)}"></option>
+                            </select>
+                        </div>
+                        <div class="dob-month">
+                            <label for="month">Tháng:</label>
+                            <select name="month">
+                                <option class="option" th:each="num : ${#numbers.sequence(1,12)}" 
+                                        th:value="${num}" th:text="${num < 10 ? '0' + num : num}" th:selected="${num == #dates.month(user.birthday)}"></option>
+                            </select>
+                        </div>
+                        <div class="dob-year">
+                            <label for="year">Năm:</label>
+                            <select name="year">
+                                <option class="option" th:each="num : ${#numbers.sequence(1950,2020)}" 
+                                        th:value="${num}" th:text="${num}" th:selected="${num == #dates.year(user.birthday)}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-info">
+                        <input type="email" th:field="*{email}" placeholder="Email" class="input email-input" required="" />
+                        <input type="password" th:field="*{password}" placeholder="Mật khẩu" class="input password-input" required="" />
+                        <input type="password" name="reenteredPassword" placeholder="Nhập lại mật khẩu" class="input password-input" required="" />
+                    </div>
+                    <input type="submit" value="Đăng ký" class="input button" />
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

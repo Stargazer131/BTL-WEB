@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Tài khoản</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="/styles/user/borrowedList.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+              integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="content">
+            <div class="info">
+                <div class="info-image">
+                    <img class="info-image-content" src="https://i1.sndcdn.com/avatars-bUnqVculBgyraYkg-VTEr2Q-t500x500.jpg" />
+                    <div class="info-content-user">
+                        <h2 th:text="${session.USER.name}">NAME</h2>
+                        <p th:text="${session.USER.email}" class="info-content-user-email">email</p>
+                    </div>
+                </div>
+                <div class="info-content">
+                    <a href="/user/homepage">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="info-content-title ">Thông tin tài khoản</p> 
+                        </div>
+                    </a>
+                    <a href="/user/waitingList">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-book-medical"></i>
+                            <p class="info-content-title ">Danh sách chờ duyệt</p> 
+                        </div>
+                    </a>
+                    <a href="/user/borrowingList">
+                        <div class="info-content-tab ">
+                            <i class="fa-solid fa-book-open"></i>
+                            <p class="info-content-title ">Danh sách đang mượn</p> 
+                        </div>
+                    </a>
+                    <a href="/user/borrowedList">
+                        <div class="info-content-tab-four">
+                            <i class="fa-solid fa-book"></i>
+                            <p class="info-content-title info-content-title-hover">Danh sách đã mượn</p> 
+                        </div>
+                    </a>
+                    <a href="/user/findBook">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p class="info-content-title">Tìm sách</p> 
+                        </div>
+                    </a>
+                    <a href="/login">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p class="info-content-title">Đăng xuất</p> 
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="display">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="bottom-right">STT</th>
+                            <th class="bottom-right">Tên sách</th>
+                            <th class="bottom-right">Tác giả</th>
+                            <th class="bottom-right">Ngày mượn</th>
+                            <th class="bottom-right">Ngày trả</th>
+                            <th class="bottom-right">Trạng thái</th>
+                            <th class="bottom"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="back-ground" th:each="record, iterationStatus : ${borrowedList}">
+                            <td class="center border-top-bottom" th:text="${iterationStatus.count}">STT</td>
+                            <td class="border-top-bottom">
+                                <div class="book-name">
+                                    <img th:src="@{/images/books/{id}.png(id=${record.book.id})}"
+                                         alt="Book" width="100px"
+                                         onerror="this.onerror=null; this.src='/images/books/default.png';">
+                                    <span th:text="${record.book.title}"></span>
+                                </div>
+                            </td>
+                            <td class="center border-top-bottom" th:text="${record.book.author}">TacGia</td>
+                            <td class="center border-top-bottom" th:text="${#dates.format(record.issueDate, 'dd/MM/yyyy')}">NgayMuon</td>
+                            <td class="center border-top-bottom" th:text="${#dates.format(record.returnDate, 'dd/MM/yyyy')}">NgayTra</td>
+                            <td class="center border-top-bottom color" th:text="${record.status}">TrangThai</td>
+                            <td class="center border-top-bottom">
+                                <form action="/user/borrowBook" method="post">
+                                    <input type="submit" value="Mượn sách" class="input-button">
+                                    <input type="hidden" name="bookId" th:value="${record.book.id}">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="/script/user/status.js"></script>
+    </body>
+
+</html>

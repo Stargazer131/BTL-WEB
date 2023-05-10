@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/styles/admin/updateBook.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"/>
+    <title>Cập nhật sách</title>
+</head>
+
+<body>
+        <div class="header">
+            <div  class="header-list">
+                <ul class="header-list-one">
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Trang chủ</li></div></a>
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Thể loại</li></div></a>
+                    <a href="/admin/mainPage"><div class="header-list-items"><li>Sách hay</li></div></a>
+                    <a href="/admin/findBook">
+                        <li>
+                            <div class="header-list-items button-search">
+                                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                <p class="search-bar-button-text">Tìm kiếm</p> 
+                            </div>
+                        </li> 
+                    </a>
+                </ul>
+            </div>
+            <div class="head-list">
+                <ul class="header-list-two">
+                    <a href="/admin/adminHomePage">
+                        <div class="header-list-items avatar-container">
+                            <li class="avatar"><i class="fa-solid fa-circle-user"></i></li>
+                            <p>admin</p>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    <div class="input-book-container">
+        <form action="/admin/listOfBook/save" method="post" th:object="${book}" enctype="multipart/form-data">
+            <div class="input-book-upper">
+                <div class="input-book-info">
+                    <input type="hidden" class="info-input-bar" th:field="*{id}">
+                    <label for="title">Tên sách</label>
+                    <input type="text" class="info-input-bar" th:field="*{title}">
+                    <label for="title" >Tác giả</label>
+                    <input type="text" class="info-input-bar" th:field="*{author}">
+                    <label for="title">Số lượng</label>
+                    <input type="number" min="0" max="100" step="1" class="info-input-bar" th:field="*{quantity}">
+                    <label for="genre">Thể loại</label>
+                    <select name="genre">
+                        <option th:each="genreName : ${listOfGenre}" th:value="${genreName}" 
+                                th:text="${genreName}" th:selected="${genreName == book.genre}">
+                        </option>
+                    </select>
+                </div>
+                <div class="input-book-cover">
+                    <div class="image">
+                        <img th:src="@{/images/books/{id}.png(id=${book.id})}"
+                         alt="Book" width="200px"
+                         onerror="this.onerror=null; this.src='/images/books/default.png';" 
+                         class="thisImage" />
+                    </div>
+                    <input type="file" name="image" accept=".png, .jpeg, .jpg">     
+                        <div class="upload-button-cover">
+                            <div class="upload-button">
+                                <i class="fa-solid fa-pen-to-square icon"></i>
+                            </div>
+                        </div>                     
+                </div>
+            </div>
+            <div class="input-book-lower">
+                <label for="description">Miêu tả</label>
+                <textarea cols="30" rows="10" th:field="*{description}" maxlength="254" require="" class="description-input"></textarea>
+            </div>
+            <div class="input-book-button">
+                <input type="submit" value="Cập nhật" class="add-button"/>
+            </div>
+        </form>
+    </div>
+    <script src="/script/main/uploadFile.js"></script>
+</body>
+
+</html>

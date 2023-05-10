@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #282a36;
+}
+/* 
+body > div {
+    margin: auto;
+} */
+
+.register-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 67vh;
+    height: 81vh;
+    background-color: #44475a;
+    margin-top: 10vh;
+    padding: 0 30px;
+    border-radius: 7px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    justify-content: space-between;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ff79c6;
+    font-size: 20px;
+}
+
+.input {
+    padding: 16px;
+    font-size: 20px;
+    border-radius: 7px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.input-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+
+.input-name-item {
+    padding: 16px;
+    font-size: 20px;
+    border-radius: 7px;
+    border: none;
+}
+
+.input-name-item-one {
+    width: 100%;
+}
+
+.input-name-item-two {
+    width: 35%;
+}
+
+.dob {
+    display: flex;
+    justify-content: space-between;
+    color:#f8f8f2;
+    font-size: 20px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance:none;
+    appearance: none;
+    font-size: 20px;
+    padding: 4px;
+    border-radius: 7px;
+    outline:0;
+    cursor: pointer;
+    width: 3.5em;
+    text-align: center;
+    color: gray;
+}
+
+select:hover {
+    color: black
+}
+
+.button {
+    font-size: 22px;
+    background-color: #bd93f9;
+    color: #fff;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #ff79c6;
+}

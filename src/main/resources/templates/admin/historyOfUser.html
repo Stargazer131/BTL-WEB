@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/styles/admin/historyOfUser.css" type="text/css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet" />
+        <title>Tài khoản</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="info">
+                <div class="info-image">
+                    <img class="info-image-content" src="https://i1.sndcdn.com/avatars-bUnqVculBgyraYkg-VTEr2Q-t500x500.jpg">
+                    <div class="info-content-user">
+                        <h2 th:text="${session.USER.name}">NAME</h2>
+                        <p th:text="${session.USER.email}" class="info-content-user-email">email</p>
+                    </div>
+                </div>
+                <div class="info-content">
+                    <a href="/admin/adminHomePage">
+                        <div class="info-content-tab info-content-tab-one">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="info-content-title">Thông tin tài khoản</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/listOfUser">
+                        <div class="info-content-tab-two">
+                            <i class="fa-solid fa-book-medical"></i>
+                            <p class="info-content-title info-content-title-hover">Danh sách người dùng</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/listOfBook">
+                        <div class="info-content-tab ">
+                            <i class="fa-solid fa-book-open"></i>
+                            <p class="info-content-title ">Quản lý sách</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/approvedList">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-book"></i>
+                            <p class="info-content-title">Danh sách phê duyệt</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/findBook">
+                        <div class="info-content-tab info-content-tab-five">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p class="info-content-title">Tìm sách</p> 
+                        </div>
+                    </a>
+                    <a href="/login">
+                        <div class="info-content-tab info-content-tab-six">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p class="info-content-title">Đăng xuất</p> 
+                        </div>
+                    </a>
+                </div>
+<!--                <div class="info-footer">
+                    <div class="messenger"><i class="fa-brands fa-facebook-messenger"></i></div>
+                    <div class="facebook"><i class="fa-brands fa-facebook"></i></div>
+                    <div class="google"><i class="fa-brands fa-google"></i></div>
+                </div>-->
+            </div>
+            <div class="display">
+                <table>
+                    <h1 class="user-name" th:text="${userName}"></h1>                    
+                    <thead>
+                        <tr class="fixed">
+                            <th class="top-right-bottom">STT</th>
+                            <th class="top-right-bottom">Tên sách</th>
+                            <th class="top-right-bottom">Tên tác giả</th>
+                            <th class="top-right-bottom">Ngày mượn</th>
+                            <th class="top-right-bottom">Ngày phải trả</th>
+                            <th class="top-right-bottom">Ngày trả</th>
+                            <th class="top-bottom">Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="record, iteratorStatus : ${records}" class="back-ground border-right-bottom">
+                            <td class="center border-top-bottom" th:text="${iteratorStatus.count}"></td>
+                            <td class="border-top-bottom">
+                                <div class="book-name">
+                                    <img th:src="@{/images/books/{id}.png(id=${record.book.id})}"
+                                         alt="Book" width="100px"
+                                         onerror="this.onerror=null; this.src='/images/books/default.png';">
+                                    <span th:text="${record.book.title}"></span>
+                                </div>
+                            </td>
+                            <td class="center border-top-bottom" th:text="${record.book.author}"></td>
+                            <td class="center border-top-bottom" th:text="${#dates.format(record.issueDate, 'dd/MM/yyyy')}"></td>
+                            <td class="center border-top-bottom" th:text="${#dates.format(record.dueDate, 'dd/MM/yyyy')}"></td>
+                            <td class="center border-top-bottom" th:text="${#dates.format(record.returnDate, 'dd/MM/yyyy')}"></td>
+                            <td class="center border-top-bottom color" th:text="${record.status}" ></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="/script/admin/status.js"></script>
+    </body>
+</html>

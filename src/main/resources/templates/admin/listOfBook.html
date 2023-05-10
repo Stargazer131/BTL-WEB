@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="/styles/admin/listOfBook.css" type="text/css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"/>
+        <title>Tài khoản</title>
+    </head>
+    <body>
+        <div class="content">
+            <div class="info">
+                <div class="info-image">
+                    <img class="info-image-content" src="https://i1.sndcdn.com/avatars-bUnqVculBgyraYkg-VTEr2Q-t500x500.jpg">
+                    <div class="info-content-user">
+                        <h2 th:text="${session.USER.name}">Ten</h2>
+                        <p th:text="${session.USER.email}" class="info-content-user-email">Email</p>
+                    </div>
+                </div>
+                <div class="info-content">
+                    <a href="/admin/adminHomePage">
+                        <div class="info-content-tab info-content-tab-one">
+                            <i class="fa-solid fa-user"></i>
+                            <p class="info-content-title">Thông tin tài khoản</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/listOfUser">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-book-medical"></i>
+                            <p class="info-content-title">Danh sách người dùng</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/listOfBook">
+                        <div class="info-content-tab-three">
+                            <i class="fa-solid fa-book-open"></i>
+                            <p class="info-content-title info-content-title-hover">Quản lý sách</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/approvedList">
+                        <div class="info-content-tab">
+                            <i class="fa-solid fa-book"></i>
+                            <p class="info-content-title">Danh sách phê duyệt</p> 
+                        </div>
+                    </a>
+                    <a href="/admin/findBook">
+                        <div class="info-content-tab info-content-tab-five">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <p class="info-content-title">Tìm sách</p> 
+                        </div>
+                    </a>
+                    <a href="/login">
+                        <div class="info-content-tab info-content-tab-six">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p class="info-content-title">Đăng xuất</p> 
+                        </div>
+                    </a>
+                </div>
+<!--                <div class="info-footer">
+                    <div class="messenger"><i class="fa-brands fa-facebook-messenger"></i></div>
+                    <div class="facebook"><i class="fa-brands fa-facebook"></i></div>
+                    <div class="google"><i class="fa-brands fa-google"></i></div>
+                </div>-->
+            </div>
+            <div class="display">
+                <table>
+                    <thead>
+                        <tr class="fixed">
+                            <th class="bottom-right">STT</th>
+                            <th class="bottom-right">Tên sách</th>
+                            <th class="bottom-right">Tên tác giả</th>
+                            <th class="bottom-right">Thể loại</th>
+                            <th class="bottom-right">Số lượng</th>
+                            <th class="bottom"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="book, iteratorStatus : ${books}" class="back-ground border-right-bottom">
+                            <td class="center border-top-bottom" th:text="${iteratorStatus.count}"></td>
+                            <td class="border-top-bottom">
+                                <div class="book-name"> 
+                                    <img th:src="@{/images/books/{id}.png(id=${book.id})}"
+                                         alt="Book" width="100px"
+                                         onerror="this.onerror=null; this.src='/images/books/default.png';">
+                                    <span th:text="${book.title}"></span>
+                                </div>
+                            </td>
+                            <td class="center border-top-bottom" th:text="${book.author}"></td>
+                            <td class="center border-top-bottom" th:text="${book.genre}"></td>
+                            <td class="center border-top-bottom" th:text="${book.quantity}"></td>
+                            <td class="center border-top-bottom">
+                                <form action="/admin/listOfBook/update" method="post">
+                                    <input type="submit" value="Chỉnh sửa" class="input-button">
+                                    <input type="hidden" name="bookId" th:value="${book.id}">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="addBook">
+                <a href="/admin/listOfBook/add" class="addBookButton">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
